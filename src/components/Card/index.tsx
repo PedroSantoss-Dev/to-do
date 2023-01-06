@@ -4,8 +4,12 @@ import { ITask } from "../../App"
 
 interface ICard{
     task: ITask
+    deleteTask: (id: number) => void;
 }
-export const Card = ({task}: ICard) => {
+export const Card = ({task, deleteTask}: ICard) => {
+    const handleDeleteTodo = ( ) => {
+        deleteTask(task.id)
+    }
     return(
         <S.Card>
             <S.Task>{task.task}</S.Task>
@@ -16,7 +20,7 @@ export const Card = ({task}: ICard) => {
                 <S.Btn>
                     <S.Up/>
                 </S.Btn>
-                <S.Btn>
+                <S.Btn onClick={handleDeleteTodo}>
                     <S.Delete/>
                 </S.Btn>
             </S.Around>

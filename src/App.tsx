@@ -24,10 +24,15 @@ function App() {
       checked: false
     }
     setListTasks([ ...listTasks, newTask])
-    toast.success("Tarefa adicionad com sucesso!")
+    toast.success("Tarefa adiciona com sucesso!",{
+      theme: "dark"
+    })
   }
-  const removeTask = () => {
-
+  const removeTask = (id:number) => {
+     setListTasks((previusTasks) => previusTasks.filter((task) => task.id !== id))
+     toast.success("Tarefa deletada com sucesso",{
+      theme: "dark"
+     })
   }
   return (
     <div>
@@ -43,7 +48,7 @@ function App() {
       </div>
       <ul>
         {listTasks.map((task) => (
-          <Card key={task.id} task={task}/>
+          <Card key={task.id} task={task} deleteTask={removeTask}/>
         ))}
        
       </ul>

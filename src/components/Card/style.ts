@@ -29,12 +29,24 @@ border: none;
 `
 export const Delete = styled(FaTrash)`
 color:#8B008B;
+&:hover{
+    color:#8B4789;
+    transform: scale(1.2);
+}
 `
 export const Up = styled(MdUpdate)`
 color:#8B008B;
+&:hover{
+    color:#8B4789;
+    transform: scale(1.2);
+}
 
 `
 export const  Copleted = styled(FaCheck)`
+color:#8B008B;
+&:hover{
 color:#8B4789;
+    transform: scale(1.2);
+}
 
 `
