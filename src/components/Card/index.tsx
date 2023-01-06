@@ -22,7 +22,7 @@ export const Card = ({task, deleteTask,checkedTask}: ICard) => {
     return(
         <S.Container>
             <div className={`card ${task.checked ? 'done' : ''}`}>
-            <h3 className={`card ${task.checked ? 'done' : ''}`}>{task.task}</h3>
+            <h3 >{task.task}</h3>
             <S.Around>
                 <S.Btn  onClick={handleChecked}>
                     <S.Copleted />

@@ -2,6 +2,7 @@
 import { ChangeEvent, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { Card } from './components/Card'
+import * as S from "./GlobalStyle"
 
 export interface ITask{
   id: number
@@ -33,6 +34,7 @@ function App() {
     toast.success("Tarefa adiciona com sucesso!",{
       theme: "dark"
     })
+    setTask('')
   }
   
   const removeTask = (id:number) => {
@@ -49,7 +51,7 @@ function App() {
    localStorage.setItem('@taskList:task', JSON.stringify(listTasks))
   },[listTasks])
   return (
-    <div>
+    <S.App>
       <h1>Todo app</h1>
       <div >
         <input
@@ -58,7 +60,7 @@ function App() {
         placeholder=' task..'
         onChange={handleInputChange}
         />
-        <button onClick={addTask} >add</button>
+        <button className='btn' onClick={addTask} >add</button>
       </div>
       <ul>
         {listTasks.map((task) => (
@@ -66,7 +68,7 @@ function App() {
         ))}
        
       </ul>
-    </div>
+    </S.App>
   )
 }
 
