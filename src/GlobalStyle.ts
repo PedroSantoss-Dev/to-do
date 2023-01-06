@@ -15,6 +15,7 @@ import styled, { createGlobalStyle } from "styled-components";
     justify-content: center;
     background: #1A1A1A;
     color: #fff;
+    font-family: 'Poppins', sans-serif;
    }
  `
  export const App = styled.section`

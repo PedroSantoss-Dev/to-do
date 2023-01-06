@@ -2,8 +2,9 @@
 import { ChangeEvent, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { toast } from 'react-toastify'
+import { Card } from './components/Card'
 
-interface ITask{
+export interface ITask{
   id: number
   task: string
   checked: boolean
@@ -42,9 +43,7 @@ function App() {
       </div>
       <ul>
         {listTasks.map((task) => (
-          <div key={task.id}>
-            <p>{task.task}</p>
-          </div>
+          <Card key={task.id} task={task}/>
         ))}
        
       </ul>
