@@ -1,6 +1,5 @@
 
-import { ChangeEvent, useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { ChangeEvent, useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { Card } from './components/Card'
 
@@ -11,7 +10,14 @@ export interface ITask{
 }
 function App() {
   const [task, setTask] = useState('')
-  const [listTasks, setListTasks] = useState<ITask[]>([])
+  const [listTasks, setListTasks] = useState<ITask[]>(() => {
+    const storedTasks = localStorage.getItem('@taskList:task');
+     
+    if(storedTasks){
+      return JSON.parse(storedTasks);
+    } 
+    return[]
+  }) 
  
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTask(e.target.value);
@@ -28,12 +34,20 @@ function App() {
       theme: "dark"
     })
   }
+  
   const removeTask = (id:number) => {
      setListTasks((previusTasks) => previusTasks.filter((task) => task.id !== id))
      toast.success("Tarefa deletada com sucesso",{
       theme: "dark"
-     })
+    })
   }
+  const checkedTask = ( id:number) => {
+    setListTasks((previsTask) => 
+    previsTask.map((task) => task.id !== id ? task : { ...task, checked : !task.checked})) 
+  }
+  useEffect(() => {
+   localStorage.setItem('@taskList:task', JSON.stringify(listTasks))
+  },[listTasks])
   return (
     <div>
       <h1>Todo app</h1>
@@ -48,7 +62,7 @@ function App() {
       </div>
       <ul>
         {listTasks.map((task) => (
-          <Card key={task.id} task={task} deleteTask={removeTask}/>
+          <Card key={task.id} task={task} checkedTask={checkedTask} deleteTask={removeTask} />
         ))}
        
       </ul>

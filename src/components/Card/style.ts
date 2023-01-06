@@ -3,15 +3,28 @@ import {FaTrash,FaCheck } from "react-icons/fa"
 import {MdUpdate } from "react-icons/md"
 
 
-export const  Card = styled.section`
+
+export const  Container = styled.section`
  width: 20rem;
  height: 2rem;
- display: flex;
- justify-content: space-between;
- align-items: center;
- background: #2F4F4F;
- margin: 1rem;
  border-radius: 0.3rem;
+ div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     border-radius: 0.3rem;
+
+    margin: 1rem;
+ }
+ h3{
+    font-size: 0.8em;
+    margin:  0.5rem;
+ }
+ .done{
+    background :#2F4f;
+    color:#8B008B;
+ }
+ 
 
 `
 export const Task = styled.h3`
@@ -23,7 +36,7 @@ display: flex;
 justify-content: center;
 `
 export const Btn = styled.button`
-margin:  0.2rem;
+margin:  0.3rem;
 background: transparent;
 border: none;
 `
@@ -48,5 +61,4 @@ color:#8B008B;
 color:#8B4789;
     transform: scale(1.2);
 }
-
 `

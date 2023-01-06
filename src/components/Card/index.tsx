@@ -2,28 +2,37 @@ import * as S from "./style"
 import { ITask } from "../../App"
 
 
-interface ICard{
+export interface ICard{
     task: ITask
     deleteTask: (id: number) => void;
+    checkedTask: (id: number) => void;
+    
 }
-export const Card = ({task, deleteTask}: ICard) => {
+export const Card = ({task, deleteTask,checkedTask}: ICard) => {
     const handleDeleteTodo = ( ) => {
         deleteTask(task.id)
     }
+    const handleChecked = ( ) => {
+        checkedTask(task.id)
+
+    }
+   
+    
+    
     return(
-        <S.Card>
-            <S.Task>{task.task}</S.Task>
+        <S.Container>
+            <div className={`card ${task.checked ? 'done' : ''}`}>
+            <h3 className={`card ${task.checked ? 'done' : ''}`}>{task.task}</h3>
             <S.Around>
-                <S.Btn>
-                    <S.Copleted/>
+                <S.Btn  onClick={handleChecked}>
+                    <S.Copleted />
                 </S.Btn>
-                <S.Btn>
-                    <S.Up/>
-                </S.Btn>
+                
                 <S.Btn onClick={handleDeleteTodo}>
                     <S.Delete/>
                 </S.Btn>
             </S.Around>
-        </S.Card>
+        </div>
+        </S.Container>
     )
 }
